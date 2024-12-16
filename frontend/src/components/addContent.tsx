@@ -2,10 +2,16 @@ import { useForm } from "react-hook-form";
 import { Close } from "../icons/icons";
 import { BASE_URL } from "../App";
 import { errorMessage } from "../helper function/errorMessage";
+import { loadContent } from "../helper function/loadContent";
+import { NavigateFunction } from "react-router-dom";
+import { Contents } from "./Dashboard";
+
 
 export interface AddContentProps {
   open: boolean;
   onClose: () => void;
+  setContent:(contents:Contents | undefined)=>void;
+  navigate:NavigateFunction;
 }
 export const AddContent = (props: AddContentProps) => {
   const {
@@ -13,6 +19,8 @@ export const AddContent = (props: AddContentProps) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate=props.navigate;
+  const setContent=props.setContent;
   return (
     <>
       {props.open && (
@@ -42,6 +50,7 @@ export const AddContent = (props: AddContentProps) => {
                     props.onClose();
                   }
                   alert(dataResponse.message);
+                  loadContent({navigate,setContent});
                   return;
                 } else {
                   const message=errorMessage(dataResponse.error.errorResponse.errmsg.toString())

@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { DeleteIcon, ShareIcon } from "../icons/icons";
 import { getEmbedUrl } from "../helper function/youtube_ID";
+import EmbedComponent from "./twitterEmbedded";
 
 export interface cardProps {
   icon: ReactElement;
@@ -44,9 +45,7 @@ export const Card = (props: cardProps) => {
             ></iframe>
           )}
           {props.type === "twitter" && (
-            <blockquote className="twitter-tweet">
-              <a href={embedUrl}></a>
-            </blockquote>
+            <EmbedComponent type="twitter" embedUrl={embedUrl}/>
           )}
         </div>
       </div>

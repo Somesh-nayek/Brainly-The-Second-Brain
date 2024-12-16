@@ -4,7 +4,7 @@ import { boolean } from "zod";
 const userSchema = new Schema({
     username: { type: String, unique: true, required: true },
     password: { type: String, required: true,unique:false},
-    status:{type:boolean,required:true}
+    status:{type:Boolean,required:true}
 });
 
 const contentSchema = new Schema({

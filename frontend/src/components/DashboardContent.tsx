@@ -14,8 +14,7 @@ export const Content=(props:ContentProps)=>{
     const {setContent,content,navigate}=props
     useEffect(()=>{
       loadContent({setContent,navigate});
-    },[navigate,setContent,content]);
-    console.log(content);
+    },[]);
     return <div className="flex flex-wrap bg-gray-200 min-h-screen justify-center">
     {content?.map((data, key) => (
       <Card

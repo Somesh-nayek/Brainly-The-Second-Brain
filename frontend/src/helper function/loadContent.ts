@@ -15,6 +15,7 @@ export async function loadContent(props: Props): Promise<void> {
     return;
   }
   try {
+    console.log("1");
     const response = await fetch(`${BASE_URL}/content`, {
       method: "GET",
       headers: {
@@ -22,24 +23,24 @@ export async function loadContent(props: Props): Promise<void> {
         authorization: token,
       },
     });
-
+    console.log("2");
     if (!response.ok) {
       alert("Failed to load content");
       return;
     }
-
+    console.log("3");
     const data = await response.json();
     const material = data.Contents;
-
+    console.log("4");
     if (!material || material.length === 0) {
       alert("No content found");
       return;
     }
-
+    console.log("5");
     props.setContent(material);
     return;
   } catch (error) {
     console.log(error);
-    alert(error);
+    alert(`Failed to load content:${error}`);
   }
 }

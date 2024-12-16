@@ -19,7 +19,6 @@ export const getUser=async (props:Props)=>{
         }
     });
     if(!response.ok){
-        // alert("Failed to load content");
         return;
     }
     const data=await response.json();
