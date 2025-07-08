@@ -17,9 +17,9 @@ dist/
 build/
 out/
 
-# Static build artifacts (generated only, not source files)
-*.css.map
-*.html
+# Ignore only generated HTML (not Vite's entry)
+dist/*.html
+build/*.html
 
 # TypeScript cache
 *.tsbuildinfo
