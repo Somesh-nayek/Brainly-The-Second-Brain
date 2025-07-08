@@ -19,7 +19,7 @@ export const AddContent = (props: AddContentProps) => {
   } = useForm();
   const navigate=props.navigate;
   const setContent=props.setContent;
-  const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:3000/api/v1/users";
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   return (
     <>
       {props.open && (

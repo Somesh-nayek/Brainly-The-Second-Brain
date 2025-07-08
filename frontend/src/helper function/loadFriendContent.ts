@@ -7,7 +7,7 @@ interface Props {
   hash: string | undefined;
 }
 export const loadFriendContent=async (props:Props)=>{
-    const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:3000/api/v1/users";
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     try {
         const response = await fetch(`${BASE_URL}/brain/${props.hash}`, {
         method: "GET",

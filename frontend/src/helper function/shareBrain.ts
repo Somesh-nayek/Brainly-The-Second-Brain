@@ -6,7 +6,7 @@ export const getHash = async ({
   navigate: NavigateFunction;
 }): Promise<string> => {
   const token = localStorage.getItem("token");
-  const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:3000/api/v1/users";
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   if (!token) {
     navigate("/signin");
     return "";
@@ -32,7 +32,7 @@ export const switchStatus = async ({
   navigate: NavigateFunction;
 }): Promise<boolean> => {
   const token = localStorage.getItem("token");
-  const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:3000/api/v1/users";
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   if (!token) {
     navigate("/signin");
     return false;

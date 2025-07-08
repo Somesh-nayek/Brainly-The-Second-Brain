@@ -5,7 +5,7 @@ interface Props{
 }
 export const getUser=async (props:Props)=>{
     const token=localStorage.getItem("token");
-    const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:3000/api/v1/users";
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     if(!token){
         alert("You need to be logged in");
         props.navigate("/signin");

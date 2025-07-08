@@ -7,7 +7,7 @@ interface Props {
 
 export async function loadContent(props: Props): Promise<void> {
   const token = localStorage.getItem("token");
-  const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:3000/api/v1/users";
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   if (!token) {
     alert("Sign in first");
     props.navigate("/signin");
