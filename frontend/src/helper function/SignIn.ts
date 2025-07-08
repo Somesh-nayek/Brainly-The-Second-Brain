@@ -1,9 +1,8 @@
 import { FieldValues } from "react-hook-form";
 import { NavigateFunction } from "react-router-dom";
-import { BASE_URL } from "../App";
 
 export async function signIn(data:FieldValues,navigate:NavigateFunction){
-    // console.log(JSON.stringify(data));
+  const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:3000/api/v1/users";
     const response=await fetch(BASE_URL+"/signin",{
       method:"POST",
       headers: {

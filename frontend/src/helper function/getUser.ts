@@ -1,11 +1,11 @@
 import { NavigateFunction } from "react-router-dom";
-import { BASE_URL } from "../App";
-
 interface Props{
     navigate:NavigateFunction;
+    setUserStatus:(val:boolean)=>void
 }
 export const getUser=async (props:Props)=>{
     const token=localStorage.getItem("token");
+    const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:3000/api/v1/users";
     if(!token){
         alert("You need to be logged in");
         props.navigate("/signin");
@@ -18,9 +18,14 @@ export const getUser=async (props:Props)=>{
             authorization:token
         }
     });
-    if(!response.ok){
-        return;
+    if(response.status==500){
+        alert("Server error, try signing in again or later");
+        props.navigate("/signin");
+    }else if(response.status==404){
+        alert("User not found, create a new account");
+        props.navigate("/signup");
     }
     const data=await response.json();
-    return data.user.status;
+    props.setUserStatus(data.status);
+    return;
 }

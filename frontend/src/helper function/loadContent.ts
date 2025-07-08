@@ -1,7 +1,5 @@
 import { NavigateFunction } from "react-router-dom";
-import { BASE_URL } from "../App";
-import { Contents } from "../components/Dashboard";
-
+import { Contents } from "../Constants";
 interface Props {
   navigate: NavigateFunction;
   setContent: (content:Contents | undefined)=>void;
@@ -9,13 +7,13 @@ interface Props {
 
 export async function loadContent(props: Props): Promise<void> {
   const token = localStorage.getItem("token");
+  const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:3000/api/v1/users";
   if (!token) {
     alert("Sign in first");
     props.navigate("/signin");
     return;
   }
   try {
-    console.log("1");
     const response = await fetch(`${BASE_URL}/content`, {
       method: "GET",
       headers: {
@@ -23,24 +21,20 @@ export async function loadContent(props: Props): Promise<void> {
         authorization: token,
       },
     });
-    console.log("2");
+    const data = await response.json();
     if (!response.ok) {
-      alert("Failed to load content");
+      alert(data.message);
+      props.navigate("/signin");
       return;
     }
-    console.log("3");
-    const data = await response.json();
     const material = data.Contents;
-    console.log("4");
     if (!material || material.length === 0) {
       alert("No content found");
       return;
     }
-    console.log("5");
     props.setContent(material);
     return;
   } catch (error) {
-    console.log(error);
-    alert(`Failed to load content:${error}`);
+    alert(`Failed to load content(maybe the backend is down):${error}`);
   }
 }

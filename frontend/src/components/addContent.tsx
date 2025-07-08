@@ -1,11 +1,9 @@
 import { useForm } from "react-hook-form";
 import { Close } from "../icons/icons";
-import { BASE_URL } from "../App";
 import { errorMessage } from "../helper function/errorMessage";
 import { loadContent } from "../helper function/loadContent";
 import { NavigateFunction } from "react-router-dom";
-import { Contents } from "./Dashboard";
-
+import { Contents } from "../Constants";
 
 export interface AddContentProps {
   open: boolean;
@@ -21,6 +19,7 @@ export const AddContent = (props: AddContentProps) => {
   } = useForm();
   const navigate=props.navigate;
   const setContent=props.setContent;
+  const BASE_URL = import.meta.env.VITE_BASE_URL || "http://localhost:3000/api/v1/users";
   return (
     <>
       {props.open && (
@@ -103,7 +102,7 @@ export const AddContent = (props: AddContentProps) => {
                     );
                   },
                 })}
-                placeholder="Type"
+                placeholder={`Type ("twitter" or "youtube" for now)`}
               />
               {errors.type?.message && (
                 <p className="text-red-500">

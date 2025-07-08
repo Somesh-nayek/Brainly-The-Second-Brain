@@ -17,7 +17,7 @@ export const Card = (props: cardProps) => {
     <div className="bg-white border-2 border-gray-300 max-w-[300px] max-h-[400px] rounded-lg shadow-sm p-3 m-5 flex flex-col justify-between">
       <div>
         <div className="flex gap-4 items-center justify-between">
-          <div className="flex items-center gap-2 text-[18px] font-bold justify-center">
+          <div className="flex items-center gap-2 text-[18px] font-medium justify-center">
             {props.icon}
             {props.title}
           </div>
@@ -60,7 +60,7 @@ export const Card = (props: cardProps) => {
             </div>
           ))}
         </div>
-        <div className="text-gray-400 text-sm mt-2 font-bold">
+        <div className="text-sm mt-2 font-light">
           {`Added on ${props.date}`}
         </div>
       </div>

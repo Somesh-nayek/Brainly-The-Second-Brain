@@ -1,7 +1,13 @@
-import { DocumentIcon, LinkIcon, Logo, Profile, Tags, TwitterIcon, VidepIcon } from "../icons/icons";
+import { AllFilesIcon, DocumentIcon, LinkIcon, Logo, Profile, Tags, TwitterIcon, VidepIcon } from "../icons/icons";
 import { SidebarItem } from "./sidebarItem";
-
-export const Sidebar = () => {
+interface SidebarProps {
+  OnlyYoutube: () => void;
+  OnlyTwitter: () => void;
+  AllFiles:()=>void;
+  twitter: boolean;
+  youtube: boolean;
+}
+export const Sidebar = ({OnlyYoutube,OnlyTwitter,twitter,youtube,AllFiles}:SidebarProps) => {
   return (
     <div className="bg-white w-72 h-screen overflow-hidden">
       <div className="flex items-end w-full space-x-2 p-2 border-2">
@@ -12,13 +18,14 @@ export const Sidebar = () => {
           Second Brain
         </div>
       </div>
-      <div className="mt-5 ml-8">
-        <SidebarItem title="Tweets" icon={<TwitterIcon/>}/>
-        <SidebarItem title="Youtube" icon={<VidepIcon/>}/>
-        <SidebarItem title="Links" icon={<LinkIcon/>}/>
-        <SidebarItem title="Documents" icon={<DocumentIcon/>}/>
-        <SidebarItem icon={<Tags/>} title="Tags"/>
-        <SidebarItem icon={<Profile/>} title="Profile"/>
+      <div className="m-4">
+        <SidebarItem title="All Files" onClick={AllFiles} isActive={true} icon={<AllFilesIcon/>}/>
+        <SidebarItem onClick={OnlyTwitter} isActive={twitter} title="Tweets" icon={<TwitterIcon/>}/>
+        <SidebarItem title="Youtube" onClick={OnlyYoutube} isActive={youtube} icon={<VidepIcon/>}/>
+        <SidebarItem title="Links" onClick={()=>{}} isActive={true} icon={<LinkIcon/>}/>
+        <SidebarItem title="Documents" onClick={()=>{}} isActive={true} icon={<DocumentIcon/>}/>
+        <SidebarItem icon={<Tags/>} onClick={()=>{}} isActive={true} title="Tags"/>
+        <SidebarItem icon={<Profile/>} onClick={()=>{}} isActive={true} title="Profile"/>
       </div>
     </div>
   );
