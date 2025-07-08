@@ -55,7 +55,7 @@ export const Dashboard=()=>{
     setShare(!shareOpen);
   }
   return (
-    <div className="flex w-full h-screen relative">
+    <div className="flex w-full animate pulse h-screen relative">
       <AddContent open={addContentOpen} onClose={ContentOpenToggle} navigate={navigate} setContent={setContent}/>
       <ShareBrain open={shareOpen} onClose={ShareToggle} userStatus={userStatus} setUserStatus={setUserStatus} navigate={navigate}/>
       <div>

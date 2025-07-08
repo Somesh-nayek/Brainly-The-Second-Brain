@@ -20,9 +20,10 @@ out/
 *.js.map
 *.d.ts
 
-# Static build artifacts
+# Static build artifacts (in dist/build only)
+dist/
+build/
 *.html
-*.css
 *.css.map
 
 # TypeScript cache
